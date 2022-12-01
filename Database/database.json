@@ -1,0 +1,118 @@
+{
+    "USER": {
+      "US001": {
+        "Password":"XXXX",
+        "Name" : "LamSam",
+        "Email":"xxxx@gmail.com"
+      },
+      "US002": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US003": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US004": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US005": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US006": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US007": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US008": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US009": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      },
+      "US0010": {
+        "Password":"XXXX",
+        "Name" : "Tom",
+        "Email":"xxxx@gmail.com"
+      }
+    },
+    "ORDER": {
+      "OR001": {
+        "UserID":"",
+        "CreditCard":"",
+        "IDCard":"",
+        "FlightID":"FL001",
+        "ChildNUm":0,
+        "Adults":0
+      },
+      "OR002": {
+        "UserID":"",
+        "CreditCard":"",
+        "IDCard":"",
+        "FlightID":"FL001",
+        "ChildNUm":0,
+        "Adults":0
+      }
+    },
+    "FLIGHT":{
+      "FL001": {
+        "departure":"Japan Airport",
+        "destination":"Hong Kong Airport",
+        "Date":"1/10/2022",
+        "Time":"10:00-13:00",
+        "FirstPrice":5450,
+        "BusinessPrice":3200,
+        "EconomicPrice":999,
+        "FirstNum":10,
+        "BusinessNum":20,
+        "EconomicNum":80
+      },
+      "FL002": {
+        "departure":"Hong Kong Airport",
+        "destination":"Japan Airport",
+        "Date":"1/10/2022",
+        "Time":"13:00-15:30",
+        "FirstPrice":5450,
+        "BusinessPrice":3124,
+        "EconomicPrice":1142,
+        "FirstNum":10,
+        "BusinessNum":20,
+        "EconomicNum":80
+      },
+      "FL003": {
+        "departure":"Hong Kong Airport",
+        "destination":"Japan Airport",
+        "Date":"2/10/2022",
+        "Time":"12:00-14:30",
+        "FirstPrice":7500,
+        "BusinessPrice":4580,
+        "EconomicPrice":1820,
+        "FirstNum":10,
+        "BusinessNum":20,
+        "EconomicNum":80
+      }
+    },
+    "UniqueID":{
+      "USERID":["US001","US002","US003","US004","US005","US006","US007","US008","US009","US0010"],
+      "a":["1","2"]
+    }
+    
+
+    
+  
+  }

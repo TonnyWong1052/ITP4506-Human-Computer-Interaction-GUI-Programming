@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    
+    <link href="../css/Home.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../css/Search.css" rel="stylesheet" type="text/css"> -->
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    <script src="../jslib/jquery.simplePagination.js"></script>
+    <script src="../jquery-ui-1.13.2/jquery-ui.min.js"></script>
+    <link href="../jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../jquery-ui-1.13.2/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="../css/simplePagination.css" />
+    <link rel="icon" href="../image/Airline-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../backend/assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../backend/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <!-- <link href="../backend/assets/css/style.css" rel="stylesheet"> -->
+    <style>
+        #FlightList{
+        display:contents;
+    
+    }
+
+    #FlightList li:hover{
+    /* background-color: #1cda84; */
+        background-color: #f5f4f6;
+    
+    }
+
+    #DatePaginationContainer ul{
+        list-style: none;
+        text-align: center;
+        position: relative;
+        left: 45%;
+        width: 100%;
+    }
+    #DatePaginationContainer li a {
+        font-size: 15px;
+        padding: 5px 10px;
+        
+    }
+
+    #DatePaginationContainer li .current {
+        font-size: 20px;
+        padding: 5px 10px;
+        font-weight: 700;
+    }
+    </style>
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLX7R3YnZTq67O93mYxIH3MzXrczXGvQo",
+            authDomain: "ejoproject-eaa68.firebaseapp.com",
+            databaseURL: "https://ejoproject-eaa68-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "ejoproject-eaa68",
+            storageBucket: "ejoproject-eaa68.appspot.com",
+            messagingSenderId: "270711127515",
+            appId: "1:270711127515:web:fbef088bd38ae00abcfbfe"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, set, get, push, update, remove, ref, child }
+            from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+        const db = getDatabase();
+
+
+        $(document).ready(function () {
+
+
+
+            var txtNumClassbtn = "";
+            var CabinClass = $.cookie('CabinClass');
+
+            var Adults = parseInt($.cookie('Adults'));
+            var Children = parseInt($.cookie('Children'));
+            var travelers = updateTravelersNum();
+            var trip_selected = $.cookie('trip_selected');
+            var departure = $.cookie('departure');
+            var destination = $.cookie('destination');
+            var departureAbbr;
+            var destinationAbbr;
+
+
+            var dateTo = new Date($.cookie('dateTo'));
+            var ddt = dateTo.getDate();
+            var mmt = dateTo.getMonth() + 1;
+            var yyyyt = dateTo.getFullYear();
+
+
+            var dateBack = dateTo;
+            var ddf = dateBack.getDate();
+            var mmf = dateBack.getMonth() + 1;
+            var yyyyf = dateBack.getFullYear();
+
+            // $(window).on("load",function(){
+            //     departureAbbr="";
+            //     destinationAbbr="";
+
+            // })
+
+
+
+            if ($.cookie('dateBack') != null || $.cookie('dateBack') != "") {
+                dateBack = new Date($.cookie('dateBack'));
+                ddf = dateBack.getDate();
+                mmf = dateBack.getMonth() + 1;
+                yyyyf = dateBack.getFullYear();
+
+            }
+
+
+            $("#dateTo").val(yyyyt + '-' + mmt + '-' + ddt);
+            $("#dateBack").val(yyyyf + '-' + mmf + '-' + ddf);
+            $('#destination').val(destination);
+            $('#departure').val(departure);
+            $('#Adults').val(Adults);
+            $('#Children').val(Children);
+
+
+            $('#dateTo').datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: yyyyt + '-' + mmt + '-' + ddt
+
+            });
+
+            $('#dateBack').datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: yyyyf + '-' + mmf + '-' + ddf
+            });
+
+            $('#dateTo').change(function () {
+                dateTo = new Date($('#dateTo').val());
+                dateBack = dateTo;
+                dateBack.setDate(dateBack.getDate() + 1);
+                ddf = dateTo.getDate();
+                mmf = dateTo.getMonth() + 1;
+                yyyyf = dateTo.getFullYear();
+                $('#dateBack').datepicker('option', { minDate: yyyyf + '-' + mmf + '-' + ddf });
+            })
+
+
+            updateTxtNumClassbtn(txtNumClassbtn);
+
+            if (trip_selected == "RoundTrip") {
+                $('#OneWay').prop('checked', false);
+                $('#RoundTrip').prop("checked");
+
+            } else if (trip_selected == "OneWay") {
+                $('#RoundTrip').prop("checked");
+                $('#OneWay').prop('checked', false);
+            }
+
+
+            //--------------------------------------------------------------------------------------------
+
+            $('#RoundTrip').change(function () {
+
+                $('#RoundTrip').prop("checked");
+                $('#OneWay').prop('checked', false);
+                trip_selected = $('#RoundTrip').val();
+
+                return false;
+            });
+
+            $('#OneWay').change(function () {
+
+                $('#RoundTrip').prop('checked', false);
+                $('#OneWay').prop("checked");
+                trip_selected = $('#OneWay').val();
+
+                return false;
+            });
+            //---------------------------------------------------------------------------------------------------
+            $('#NumClassbtn').click(function () {
+                $('#NumClassBoxContainer').show();
+                return false;
+            });
+            $('#closebtn').click(function () {
+                $('#NumClassBoxContainer').hide();
+                $("#SelectNumError").html("");
+                return false;
+            });
+
+            function updateTravelersNum() {
+                Adults = parseInt($('#Adults').val());
+                Children = parseInt($('#Children').val());
+
+                return Adults + Children;
+            }
+
+            function updateTxtNumClassbtn(txt) {
+                if (travelers == 1) {
+                    txt = CabinClass + " & " + travelers + " Traveler";
+                } else {
+                    txt = CabinClass + " & " + travelers + " Travelers";
+                }
+
+                $('#NumClassbtn').html(txt);
+            }
+
+
+
+
+
+            $('#Donebtn').click(function () {
+                if ($('#First').is(':checked')) {
+
+                    CabinClass = 'First';
+                    travelers = updateTravelersNum();
+                    txtNumClassbtn = CabinClass + " & " + travelers + " Travelers";
+                    updateTxtNumClassbtn(txtNumClassbtn);
+
+                } else if ($('#Business').is(':checked')) {
+
+                    CabinClass = 'Business';
+                    travelers = updateTravelersNum();
+                    txtNumClassbtn = CabinClass + " & " + travelers + " Travelers";
+                    updateTxtNumClassbtn(txtNumClassbtn);
+
+                } else if ($('#Economy').is(':checked')) {
+
+                    CabinClass = 'Economy';
+                    travelers = updateTravelersNum();
+                    txtNumClassbtn = CabinClass + " & " + travelers + " Travelers";
+                    updateTxtNumClassbtn(txtNumClassbtn);
+                }
+
+                Adults = parseInt($('#Adults').val());
+                Children = parseInt($('#Children').val());
+
+
+                $("#SelectNumError").html("");
+                $('#NumClassBoxContainer').hide();
+                return false;
+            });
+            //---------------------------------------------------------------------------------------------------
+
+            function alertError(errormsg) {
+                $("#SelectNumError").html(errormsg);
+            }
+
+
+            $('#Aminusbtn').click(function () {
+                if ($('#Adults').val() > 1) {
+                    $("#SelectNumError").html("");
+                    Adults = parseInt($('#Adults').val()) - 1;
+                    $('#Adults').val(Adults);
+                } else {
+                    alertError("The number of Adults cannot be less than 1!");
+                }
+                return false;
+            });
+
+            $('#Aplusbtn').click(function () {
+                if ((Adults + Children) < 9) {
+                    $("#SelectNumError").html("");
+                    Adults = parseInt($('#Adults').val()) + 1;
+                    $('#Adults').val(Adults);
+                } else {
+                    alertError("You can only select 9 travelers!");
+                }
+            });
+
+            $('#Cplusbtn').click(function () {
+                if ((Adults + Children) < 9) {
+                    $("#SelectNumError").html("");
+                    Children = parseInt($('#Children').val()) + 1;
+                    $('#Children').val(Children);
+                } else {
+                    alertError("You can only select 9 travelers!");
+                }
+            });
+
+            $('#Cminusbtn').click(function () {
+                if ($('#Children').val() > 0) {
+                    $("#SelectNumError").html("");
+                    Children = parseInt($('#Children').val()) - 1;
+                    $('#Children').val(Children);
+                } else {
+                    alertError("Then number of Child cannot be less than 0!");
+                }
+                return false;
+            });
+
+
+
+
+            var switchPlaceDeg = 0;
+            //--------------------------------------------------------------            
+            $("#switchPlace").click(function () {
+                var departuretext = $('#departure').val();
+                var destinationtext = $('#destination').val();
+
+                if (departuretext != null && destinationtext != null) {
+                    switchPlaceDeg += 180;
+                    $(this).animate({ rotate: switchPlaceDeg + 'deg' }, 300);
+
+                    $('#destination').val(departuretext);
+                    $('#departure').val(destinationtext);
+                }
+
+
+            });
+
+            //--------------------------------------------------------------            
+            var perPage = 6;
+            var numItems = $(".DataGridContainer").length
+
+            $(".DataGridContainer").slice(perPage).hide();
+
+            $("#DatePaginationContainer").pagination({
+                items: numItems,
+                itemsOnPage: perPage,
+                prevText: "&laquo;",
+                nextText: "&raquo;",
+                cssStyle: 'dark-theme',
+                onPageClick: function (pageNumber) {
+                    var from = perPage * (pageNumber - 1);
+                    var to = from + perPage;
+                    $(".DataGridContainer").hide().slice(from, to).show();
+                }
+            })
+
+
+            $(window).on("load", function () {
+                $(".DataGridContainer").hide();
+                $("#status").delay().fadeIn();
+                $("#preloader").delay().fadeIn();
+                $("#status").delay(2000).fadeOut(3000);
+                $("#preloader").delay(2100).fadeOut(2000);
+                $(".DataGridContainer").slice(1, 7).delay(2100).fadeIn();
+
+            })
+
+            // --------------------------------------------
+            $("#Searchbtn").click(function () {
+                $(".DataGridContainer").hide();
+                $("#status").delay().fadeIn();
+                $("#preloader").delay().fadeIn();
+                $("#status").delay(2000).fadeOut(3000);
+                $("#preloader").delay(2100).fadeOut(2000);
+                $(".DataGridContainer").slice(1, 7).delay(2100).fadeIn();
+            })
+
+            $(".Selectbtn").click(function () {
+                $("#status").delay().fadeIn();
+                $("#preloader").delay().fadeIn();
+                $("#status").delay(2000).fadeOut(3000);
+                $("#preloader").delay(2100).fadeOut(2000);
+                setTimeout(function () {
+                    $(location).prop("href", "../html/ticketConfirm2.html");
+                }, 2000)
+            })
+
+            // --------------------------------------------
+
+
+
+            // $( "#FlightList" ).append('<li class="DataGridContainer">\
+            //     <div class="AirLineIcon">\
+            //         <img class="CompanyLogo" src="../image/hong-kong-airlines.svg">\
+            //     </div>\
+            //     <div class="PlaceTimeContainer">\
+            //         <div class="DepartureTime">\
+            //             <a>17:55</a>\
+            //         </div>\
+            //         <div class="DeparturePlaceDate">\
+            //             <a>HKG. 28 DEC</a>\
+            //         </div>\
+            //         <div class="DurationWay">\
+            //             <a>3Hrs 50Mins</a>\
+            //             <hr>\
+            //             <a>Direct</a>\
+            //         </div>\
+            //         <div class="DestinationTime">\
+            //             <a>22:45</a>\
+            //         </div>\
+            //         <div class="DestinationPlaceDate">\
+            //             <a>JPG. 29 DEC</a>\
+            //         </div>\
+            //     </div>\
+            //     <div class="PriceContainer">\
+            //         <a class="Price">HKD 5,000,41</a><br>\
+            //         <span class="PriceMsg">Total price for all travllers</span>\
+            //     </div>\
+            //     <div class="SelectButton">\
+            //         <button class="Selectbtn">Select</button>\
+            //     </div>\
+            // </li>');
+
+
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $(".button-sp").click(function(){
+                $(location).prop("href", "../html/editMyOrder.html");
+            });
+
+            $(".button-sp2").click(function(){
+                $(location).prop("href", "../html/editMyOrder2.html");
+            });
+        });
+    </script>
+
+
+</head>
+
+<body style="background-image: url('../image/sky2.jpg')">
+
+    <header>
+        <div class="inner-width">
+        <h1 class="logo" style="font-size: 32px;font-weight:700px"><span style="color:#1b42f0;font-size: 32px;font-weight:700px;">IVE </span>AIRLINE</h1>
+          <nav class="navigation-menu">
+            <a href="../html/Home-Login.html"></i> Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            
+            <!-- <button  id="Loginbtn" class="Login_btn">LOGIN</button> -->
+            <!-- <div class="UserDropdown"  hidden>
+                <a class="UserDropdown-item d-flex align-items-center show" href="users-profile.html" id="UserDropdownMenuButton1" data-bs-toggle="UserDropdown" aria-expanded="true">
+                    <img src="../image/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+                    <span class="d-none d-md-block UserDropdown-toggle ps-2 user-name" style="overflow: hidden; display: none;">Chan Xiu Ming</span>
+                </a>
+                <ul class="UserDropdown-menu show" aria-labelledby="UserDropdownMenuButton1" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 47px, 0px);">
+                    <li><a class="UserDropdown-item" href="profile.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+                    <li><a class="UserDropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+                </ul>
+            </div> -->
+            <div class="dropdown">
+                <img class="dropimg" src="../image/user_icon.jpg">
+                
+                <div class="dropdown-content">
+                  <a  class="dropdowntext"  href="../html/myProfile.html">My profile</a>
+                  <a  class="dropdowntext"  href="myOrder.html">My Order</a>
+                  <a  class="dropdowntext"  href="../html/Home.html">Login Out</a>
+                </div>
+            </div>
+          </nav>
+          
+        </div>
+    </header>
+
+
+    <div id="preloader" hidden>
+        <div id="status" hidden><img src="../image/loading.gif" /></div>
+    </div>
+
+    <div class="AllContainer" style="background-image: url('../image/sky2.jpg');height: 800px;">
+        <ul id="FlightList">
+            <br>
+            <h3 style="margin-left: 20px;">Your Order History:</h3>
+            <table class="table no-wrap table-hover">
+                <thead style="background-color: rgb(5, 5, 248);">
+                    <tr style="color: white;">
+                        <th class="border-top-0">Order ID</th>
+                        <th class="border-top-0">Name</th>
+                        <th class="border-top-0">Departure date</th>
+                        <th class="border-top-0">Amount (HKD)</th>
+                        <th class="border-top-0">Edit</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    <tr>
+                        <td>10001</td>
+                        <td class="txt-oflo">Hong Kong <span style="margin: 20px;">To</span> Japan</td>
+                        <td>$522</td>
+                        <td>2023-5-20</td>
+                        <td><button type="button" class="btn btn-primary button-sp">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>10002</td>
+                        <td class="txt-oflo">United States of America <span style="margin: 20px;">To</span> The United Kingdom</td>
+                        <td>$430</td>
+                        <td>2022-12-2</td>
+                        <td><button type="button" class="btn btn-primary button-sp2">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>10003</td>
+                        <td class="txt-oflo">The United Kingdom <span style="margin: 20px;">To</span> United States of America</td>
+                        <td>$321</td>
+                        <td>2022-12-30</td>
+                        <td><button type="button" class="btn btn-primary button-sp">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+        </ul>
+
+
+        <div id="DatePaginationContainer">
+
+
+        </div>
+
+
+    </div>
+    <div id="NumClassBoxContainer" hidden>
+        <div id="NumClassBox">
+            <div id="NumClassBoxheader">
+                <h2>Select cabin class and number of travelers</h2>
+                <span id="closebtn"></span>
+            </div>
+            <h2 class="ChoiceType">Cabin Class:</h2>
+            <div id="Selectcabin">
+                <label><input type="radio" id="First" name="label" value="First"><span
+                        class="CabinName">First</span></label>
+                <label><input type="radio" id="Business" name="label" value="Business"><span
+                        class="CabinName">Business</span></label>
+                <label><input type="radio" id="Economy" name="label" value="Economy" checked><span
+                        class="CabinName">Economy</span></label>
+            </div>
+            <h2 class="ChoiceType">Number Of Travelers:</h2>
+            <div id="SelectNum">
+
+                <div id="textAge">
+                    <p> Adults (Age 18+) : </p>
+                    <p>Children (Age 0-17) : </p>
+                </div>
+
+                <div id="spinnerNum">
+                    <div class="spinnerContainer" id="spinner1">
+                        <button id="Aminusbtn" class="minusbtn"> - </button>
+                        <input id="Adults" type="number" max="9" min="1" value="1">
+                        <button id="Aplusbtn" class="plusbtn"> + </button>
+                    </div>
+
+                    <div class="spinnerContainer" id="spinner2">
+                        <button id="Cminusbtn" class="minusbtn"> - </button>
+                        <input id="Children" type="number" max="8" min="0" value="0">
+                        <button id="Cplusbtn" class="plusbtn"> + </button>
+                    </div>
+                </div>
+            </div>
+            <div id="SelectNumfooter">
+                <span id="SelectNumError"></span>
+                <button id="Donebtn">Done</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <title>Home</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+  function loadChart(){
+    let delayed;
+  var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+  title:{
+  text:"Sales Data Analytics In 2022",
+  },
+	axisY: {
+		title: "Order / Income/ User",
+		titleFontColor: "#4F81BC",
+		lineColor: "#4F81BC",
+		labelFontColor: "#4F81BC",
+		tickColor: "#4F81BC"
+	},	
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor:"pointer",
+		itemclick: toggleDataSeries
+	},
+	data: [{
+		type: "column",
+		name: "Sales Order",
+		legendText: "Sales Order",
+		showInLegend: true, 
+		dataPoints:[
+			{ label: "JAN", y: 24664 },
+			{ label: "FEB", y: 2302.25 },
+			{ label: "MAR", y: 1157.20 },
+			{ label: "APR", y: 2148.77 },
+			{ label: "MAY", y: 2101.50 },
+			{ label: "JUN", y: 3497.8 },
+      { label: "JUL", y: 1266.21 },
+			{ label: "AUG", y: 5302.25 },
+			{ label: "SEP", y: 3157.20 },
+			{ label: "OCT", y: 2148.77 },
+			{ label: "NOV", y: 1101.50 },
+			{ label: "DOC", y: 1297.8 }
+		]
+	},
+	{
+		type: "column",	
+		name: "Total Income",
+		legendText: "Total Income",
+		axisYType: "secondary",
+		showInLegend: true,
+		dataPoints:[
+			{ label: "JAN", y: 126 },
+			{ label: "FEB", y: 338 },
+			{ label: "MAR", y: 232 },
+			{ label: "APR", y: 183 },
+			{ label: "MAY", y: 582 },
+			{ label: "JUN", y: 232 },
+      { label: "JUL", y: 266 },
+			{ label: "AUG", y: 232 },
+			{ label: "SEP", y: 282 },
+			{ label: "OCT", y: 422 },
+			{ label: "NOV", y: 212 },
+			{ label: "DOC", y: 134 }
+		]
+	},
+	{
+		type: "column",	
+		name: "Registered User",
+		legendText: "Registered User",
+		axisYType: "secondary",
+		showInLegend: true,
+		dataPoints:[
+			{ label: "JAN", y: 434 },
+			{ label: "FEB", y: 182 },
+			{ label: "MAR", y: 843 },
+			{ label: "APR", y: 123 },
+			{ label: "MAY", y: 483 },
+			{ label: "JUN", y: 283 },
+      { label: "JUL", y: 391 },
+			{ label: "AUG", y: 932 },
+			{ label: "SEP", y: 531 },
+			{ label: "OCT", y: 831 },
+			{ label: "NOV", y: 412 },
+			{ label: "DOC", y: 431 }
+		]
+	}
+  ]
+});
+chart.render();
+
+function toggleDataSeries(e) {
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else {
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+}
+
+function switchTable(){
+  $("table").hide();
+  $("table").show()
+  .css({
+    'opacity': 0,
+    'bottom': '-100px'
+  })
+  .animate({
+    'opacity': '1',
+    'bottom': '100px'
+  }, 1000);
+}
+
+</script>
+<script>
+$(document).ready(function(){
+  $("body").show();
+  $("body").children().hide();
+  $(".center").show();
+
+  setTimeout(function(){
+    $("body").children().show();
+    $(".center").hide();
+    loadChart();
+
+    $(".user-name").hide(100, function() {
+        $(this).html("Chan Xiu Ming").show(800);
+    });
+
+    $('.count').each(function () { 
+        $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+        }, {
+                duration: 1000,
+                easing: 'swing',
+                step: function (now) {
+                        $(this).text(Math.ceil(now));
+                }
+        });
+    });
+  }, 800);
+});
+</script>
+<div id="loader" class="center"></div>
+<body style="display: none;">
+  <!-- page header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center ">
+      <i class="bi bi-list toggle-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></i>
+      <a href="home.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Airline-logo.png" alt="">
+        <span class="d-none d-lg-block">IVE Airline</span>
+      </a>
+
+  </div>
+
+    <div class="dropdown" 
+    style="position: absolute;
+    right: 10px;
+    width: 200px;height: 100dp;">
+      <a class="dropdown-item d-flex align-items-center" href="users-profile.html" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/img/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+        <span class="d-none d-md-block dropdown-toggle ps-2 user-name">User</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+      </ul>
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- menu item -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center">
+        <span style="visibility:hidden;">q312</span>
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="assets/img/Airline-logo.png" alt="">
+          <span class="d-none d-lg-block">IVE Airline</span>
+        </a>
+    </div>
+    
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+
+      <a href="home.html">
+        <div class="menu-item current-menu-item">
+          <img src="assets/img/home_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Home</span> 
+        </div>
+      </a>
+
+      <a href="order.html">
+        <div class="menu-item">
+          <img src="assets/img/order_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Order</span> 
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Home</h1>
+    </div>
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Total Sales Order</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart4"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h1 class="count" style="color: blueviolet;">23251</h1>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                <div class="card-body">
+                  <h5 class="card-title">Total Income</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cash"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h1 style="color: #34cd70;">$<amount class="count" >1294302</amount></h1>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+              <div class="card info-card customers-card">
+                <div class="card-body">
+                  <h5 class="card-title">Total Registered User</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h1 class="count" style="color: #ff771e;">12444</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- End Customers Card -->
+          </div>
+      </div>
+
+      <div class="col-xxl-12 col-md-12">
+        <div class="card info-card sales-card">
+          <div class="card-body" >
+            <h5 class="card-title" >Data Analysis</h5> 
+            <!-- <button type="button" class="btn btn-outline-success">This year</button>
+            <button type="button" class="btn btn-outline-success">This year</button> -->    
+            <div id="chartContainer" style="min-width:80%;height: 300px;"></div>     
+          </div>
+         
+
+        </div>
+      </div>
+
+      <div class="col-xxl-12 col-md-12">
+        <div class="card info-card sales-card">
+          <div class="card-body">
+            <span class="card-title" style="display: inline-block;">Most popular world destination</span> 
+
+            <div class="row">
+              <div class="col-md-12 col-lg-12 col-sm-12">
+                  <div class="white-box">
+                      <div class="d-md-flex mb-3">
+                          <h4 class="box-title mb-0">Recent sales</h4>
+                          <div class="col-md-3 col-sm-4 col-xs-6 ms-auto" onchange="switchTable();">
+                              <select class="form-select shadow-none row border-top">
+                                  <option>March 2022</option>
+                                  <option>April 2022</option>
+                                  <option>May 2022</option>
+                                  <option>June 2022</option>
+                                  <option>July 2022</option>
+                                  <option>August 2022</option>
+                                  <option>September 2022</option>
+                                  <option>October 2022</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="table-responsive">
+                          <table class="table no-wrap table-hover">
+                              <thead>
+                                  <tr>
+                                      <th class="border-top-0">Rank</th>
+                                      <th class="border-top-0">Name</th>
+                                      <th class="border-top-0">Total Sales</th>
+                                      <th class="border-top-0">Unit Price</th>
+                                      <th class="border-top-0">Income</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td><span class="badge bg-primary">First</span></td>
+                                      <td class="txt-oflo">Hong Kong -> Japan</td>
+                                      <td>522</td>
+                                      <td><span class="text-info">$1724</span></td>
+                                      <td><span class="text-success">$440002</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td><span class="badge bg-secondary">Secondary</span></td>
+                                      <td class="txt-oflo">United States of America -> The United Kingdom</td>
+                                      <td>430</td>
+                                      <td><span class="text-info">$2250</span></td>
+                                      <td><span class="text-success">$401002</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td> <span class="badge bg-success">Third</span></td>
+                                      <td class="txt-oflo">The United Kingdom -> United States of America</td>
+                                      <td>321</td>
+                                      <td><span class="text-info">$1050</span></td>
+                                      <td><span class="text-success">$32002</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td>4</td>
+                                      <td class="txt-oflo">Hong Kong -> The United Kingdom</td>
+                                      <td>234</td>
+                                      <td><span class="text-info">$3050</span></td>
+                                      <td><span class="text-success">$22002</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td>5</td>
+                                      <td class="txt-oflo">Japan -> Hong Kong</td>
+                                      <td>211</td>
+                                      <td><span class="text-info">$1520</span></td>
+                                      <td><span class="text-success">$21422</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td>6</td>
+                                      <td class="txt-oflo">Shang Hai -> Hong Kong</td>
+                                      <td>157</td>
+                                      <td><span class="text-info">$890</span></td>
+                                      <td><span class="text-success">$12002</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td>7</td>
+                                      <td class="txt-oflo">Japan -> Shang Hai</td>
+                                      <td>123</td>
+                                      <td><span class="text-info">$9250</span></td>
+                                      <td><span class="text-success">$11232</span></td>
+                                  </tr>
+                                  <tr>
+                                    <td>8</td>
+                                    <td class="txt-oflo">The United Kingdom -> Shang Hai</td>
+                                    <td>89</td>
+                                    <td><span class="text-info">$850</span></td>
+                                    <td><span class="text-success">$7222</span></td>
+                                 </tr>
+                                 <tr>
+                                  <td>9</td>
+                                  <td class="txt-oflo">Shang Hai -> The United Kingdom</td>
+                                  <td>82</td>
+                                  <td><span class="text-info">$720</span></td>
+                                  <td><span class="text-success">$6822</span></td>
+                                </tr>
+                                <tr>
+                                  <td>10</td>
+                                  <td class="txt-oflo">Japan -> The United Kingdom</td>
+                                  <td>62</td>
+                                  <td><span class="text-info">$612</span></td>
+                                  <td><span class="text-success">$4262</span></td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- End Sales Card -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; IVE Airline All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script>
+
+  </script>
+</html>

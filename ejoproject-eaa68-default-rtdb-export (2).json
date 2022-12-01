@@ -1,0 +1,434 @@
+{
+  "FLIGHT": {
+    "FL001": {
+      "BusinessNum": 20,
+      "BusinessPrice": 3200,
+      "Date": "1/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 999,
+      "FirstNum": 10,
+      "FirstPrice": 5450,
+      "Time": "10:00-13:00",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL002": {
+      "BusinessNum": 20,
+      "BusinessPrice": 3124,
+      "Date": "1/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1142,
+      "FirstNum": 10,
+      "FirstPrice": 5450,
+      "Time": "13:00-15:30",
+      "departure": "HongKong",
+      "destination": "Kansai"
+    },
+    "FL003": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL004": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL005": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL006": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL007": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL008": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL009": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL0010": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL0011": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL0012": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0013": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0014": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0015": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0016": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Shanghai"
+    },
+    "FL0017": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0018": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0019": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0020": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0021": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0022": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0023": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0024": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0025": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0026": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0027": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    },
+    "FL0028": {
+      "BusinessNum": 20,
+      "BusinessPrice": 4580,
+      "Date": "2/10/2022",
+      "EconomicNum": 80,
+      "EconomicPrice": 1820,
+      "FirstNum": 10,
+      "FirstPrice": 7500,
+      "Time": "12:00-14:30",
+      "departure": "HongKong",
+      "destination": "Taoyuan"
+    }
+  },
+  "ORDER": {
+    "OR001": {
+      "Adults": 0,
+      "ChildNUm": 0,
+      "CreditCard": "",
+      "FlightID": "FL001",
+      "IDCard": "",
+      "UserID": ""
+    },
+    "OR002": {
+      "Adults": 0,
+      "ChildNUm": 0,
+      "CreditCard": "",
+      "FlightID": "FL001",
+      "IDCard": "",
+      "UserID": ""
+    }
+  },
+  "USER": {
+    "US001": {
+      "Email": "xxxx@gmail.com",
+      "Name": "LamSam",
+      "Password": "XXXX"
+    },
+    "US0010": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US0011": {
+      "Email": "Kira@gmail.com",
+      "Name": "Kira Kira",
+      "Password": "US0011a"
+    },
+    "US002": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US003": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US004": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US005": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US006": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US007": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US008": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    },
+    "US009": {
+      "Email": "xxxx@gmail.com",
+      "Name": "Tom",
+      "Password": "XXXX"
+    }
+  },
+  "UniqueID": {
+    "USERID": [
+      "US001",
+      "US002",
+      "US003",
+      "US004",
+      "US005",
+      "US006",
+      "US007",
+      "US008",
+      "US009",
+      "US0010",
+      "US0011"
+    ],
+    "a": [
+      "1",
+      "2"
+    ]
+  }
+}

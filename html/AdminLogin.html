@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link href="../css/MemberLR.css" rel="stylesheet"type="text/css">
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    
+    <link rel="icon" href="../image/Airline-logo.png" type="image/x-icon">
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLX7R3YnZTq67O93mYxIH3MzXrczXGvQo",
+            authDomain: "ejoproject-eaa68.firebaseapp.com",
+            databaseURL: "https://ejoproject-eaa68-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "ejoproject-eaa68",
+            storageBucket: "ejoproject-eaa68.appspot.com",
+            messagingSenderId: "270711127515",
+            appId: "1:270711127515:web:fbef088bd38ae00abcfbfe"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import {getDatabase,set,get,push,update,remove,ref,child}
+        from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        
+        const db = getDatabase();
+
+
+        
+        //---------------------------------DATABASE-------------------------------------------------------------------
+        //path = USER/??  or USER or USER/US001/  all string
+        //checkACIsUnique();
+         
+        
+        // function FindData(path){
+        //     const dbref =ref(db);
+        //     var data=new Array();
+        //     get(child(dbref,path)).then((dbdata)=>{
+        //         if(dbdata.exists()){
+        //             return(dbdata.val());
+        //         }
+        //     })
+            
+        // }
+
+        function GetUSERID(USID){
+            const dbref =ref(db);
+            
+            get(child(dbref,"UniqueID/")).then((dbdata)=>{
+                if(dbdata.exists()){
+                    const updates = {};         
+                    //removes["UniqueID/"]="0";
+                    //remove(ref(db), removes);
+                    var check=dbdata.val().USERID;
+                    check.push(USID);
+                    console.log(check);
+                    update(ref(db, "UniqueID/"),{
+                        USERID:check
+                    })
+
+                }
+            })
+            
+            
+        }
+
+        function RegisterAC(userID,email,name,password){
+            const dbref =ref(db);
+            set(ref(db,"USER/"+userID),{
+                Email:email,
+                Name:name,
+                Password:password
+            }).then(()=>{
+                
+            }).catch((error)=>{
+                alert(error);
+            })
+        }
+
+
+
+        function checkACIsUnique(checkID){
+            const dbref =ref(db);
+            
+            get(child(dbref,"UniqueID/USERID/")).then((dbdata)=>{
+                if(dbdata.exists()){
+                    for( let i = 0 ; i < dbdata.val().length ; i++ ){
+                        if(checkID==dbdata.val()[i]){
+                            $("#RUserIDError").html("The UserID is already existed!");
+                            break; 
+                        }
+                    }
+                }
+                return false;
+            })
+
+        }
+
+        function SetUserNameCookie(checkID){
+            const dbref =ref(db);
+            
+            get(child(dbref,"USER/"+checkID+"/")).then((dbdata)=>{
+                
+                if(dbdata.exists()){
+                    
+                    if(checkID=="US001"){
+                        $.cookie('UserStaff', "Admin",{ expires: 7, path: '/' });
+                    }else{
+                        $.cookie('UserStaff', "Staff",{ expires: 7, path: '/' });  
+                    }
+                }
+                
+            })
+        }
+
+        function checkACIsExists(checkID){
+            const dbref =ref(db);
+            
+            get(child(dbref,"UniqueID/USERID/")).then((dbdata)=>{
+                if(dbdata.exists()){
+                    var IsExists=false;
+                    for( let i = 0 ; i < dbdata.val().length ; i++ ){
+                        if(checkID==dbdata.val()[i]){
+                            IsExists=true;
+                        }
+                    }
+                    if(!IsExists){
+                        //$("#UserIDError").html("The UserID is not exist!");
+                    }
+                    
+                }
+                
+            })
+        }
+
+        function checkPsCorrect(usid,pwd){
+            const dbref =ref(db);
+            
+            get(child(dbref,"USER/"+usid)).then((dbdata)=>{
+                if(dbdata.exists()){
+                    if(pwd!=dbdata.val().Password){
+                        $("#PasswordError").html("The password is not correct!");
+                    }
+                }
+                
+            })
+        }
+
+        // $.removeCookie('RUserIDIsUnique',{  path: '/' });
+        // checkACIsUnique("US0012");
+        // console.log($.cookie('RUserIDIsUnique'));
+
+        //--------------------------------------UI--------------------------------------------------------------------
+        //Firstname Lastname RUserID RUserIDError RPassword RPasswordError REmail REmailError RpPassword
+        $(document).ready(function(){
+            
+            
+            
+
+            function IsPasswordStrong(password){
+                let strongPassword = new RegExp("(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
+                return strongPassword.test(password);
+            }
+            
+            
+            function IsEmailCorrect(email){
+                return(email.includes("@gmail.com")|| email.includes("@yahoo.com")||email.includes("@outlook.com"))
+            }
+ 
+            function cookieAdd(){
+                if (typeof $.cookie('UserID') !== 'undefined'){
+                    $("#UserID").val($.cookie('UserID'))
+                    $("#Remember").prop('checked',true);
+                }
+            }
+
+
+            var images = ['background.jpg', 'background2.jpg'];
+            $('#Main').css({'background-image': 'url(../image/' + images[Math.floor(Math.random() * images.length)] + ')'});
+            cookieAdd();
+
+            
+            $('#switchRegister').click(function() {
+                $('#RegisterFormBox').toggle(500, function() {
+                    
+                });  
+                $('#LoginFormBox').toggle(500, function() {
+                    
+                });  
+ 
+            });
+
+
+            $('#switchLogin').click(function() {
+                $('#LoginFormBox').toggle(500, function() {
+                    
+                });  
+                $('#RegisterFormBox').toggle(500, function() {
+                    
+                });   
+ 
+            });
+            
+            $("#LoginSubmit").click(function(){
+                
+                let isChecked = $('#Remember').is(':checked');
+                var usid=$("#UserID").val();
+                
+                var pwd=$("#password").val();
+                
+
+                $("#UserIDError").html("");
+                $("#PasswordError").html("");
+
+                if(usid==""){
+                    $("#UserIDError").html("Please input your USER ID!");   
+                }
+                
+                else if(usid!=""){
+                    checkACIsExists(usid);
+                }
+                
+                if(pwd==""){
+                    $("#PasswordError").html("Please input your password!");
+                    
+                }
+                else if(pwd!=""){
+                    checkPsCorrect(usid,pwd);
+                    
+                }
+
+
+                if(isChecked){
+                    var userN=$("#UserID").val(); 
+                    $.cookie('UserID', userN,{ expires: 7, path: '/' }); 
+
+                }else{
+                    $.removeCookie('UserID',{  path: '/' });
+                }
+
+                if($("#UserIDError").html()=="" && $("#PasswordError").html()==""){
+                    $("#status").delay().fadeIn();
+                    $("#preloader").delay().fadeIn();
+                    $("#status").delay(2000).fadeOut(3000);
+                    $("#preloader").delay(2100).fadeOut(2000);
+                    SetUserNameCookie($("#UserID").val());
+                    setTimeout(function(){
+                        if($("#UserID").val() == "operator")
+                            $(location).prop("href", "../html/SuccessLoginOperator.html");
+                        else 
+                            $(location).prop("href", "../html/SuccessLoginAdmin.html");
+                    },2000)
+                   
+                }
+                
+            });
+
+//**********************
+
+
+        });
+    </script>
+
+
+</head>
+<body id="Main">
+    <div id="preloader" hidden>
+        <div id="status" hidden><img src="../image/loading.gif"/></div>
+      </div>
+    <div id="LoginFormBox">
+            <div id="switchContainer">
+                
+            </div>
+            <hr>
+        <form method="post">
+            
+            <h1 id="Title">BACKEND LOGIN</h1>
+            <div id="input-field">
+                <input type="text" id="UserID" name="UserID"  required>
+                <span></span>
+                <label>Staff ID</label>
+            </div>
+
+            <div class="LoginErrorContainer">
+                <p id="UserIDError" class="ErrorMsg"></p>
+            </div>
+
+            <div id="input-field">
+                <input type="password" id="password" name="password" required> 
+                <span></span>
+                <label>Password</label>
+            </div>
+            
+            <div class="LoginErrorContainer">
+                <p id="PasswordError" class="ErrorMsg"></p>
+            </div>
+
+            <div id="RememberForgot">
+                <input type="checkbox" id="Remember"><span style="color: #111303;font-weight: bold;font-size: 14px;">Remember Username</span>
+                <a id="forgot" href="AdminForgotPassword.html">Forgot password?</a>
+            </div>
+            <div id="SubmitBoxContainer">
+                
+                <input id="LoginSubmit" class="SubmitBox" type="button" value="LOGIN">
+            </div>
+            
+            
+        </form>  
+
+    </div>
+    
+
+</body>
+</html>

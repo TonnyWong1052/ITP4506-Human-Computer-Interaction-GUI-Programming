@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <link href="../css/Home.css" rel="stylesheet" type="text/css">
+    <link href="../css/Search.css" rel="stylesheet" type="text/css">
+    <link href="../css/ticketConfirm2.css" rel="stylesheet" type="text/css">
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    <script src="../jslib/jquery.simplePagination.js"></script>
+    <script src="../jquery-ui-1.13.2/jquery-ui.min.js"></script>
+    <link href="../jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../jquery-ui-1.13.2/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="../css/simplePagination.css" />
+    <link rel="icon" href="../image/Airline-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        #SearchTicketContainer {
+            background-color: rgb(190, 190, 190);
+            background-image: url("../image/airline_bk.png");
+            height: 200px;
+            width: 100%;
+            opacity: 0.9;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.card')
+                .fadeIn()
+                .css({
+                    top: '-100%',
+                    left: '30%',
+                    position: 'absolute',
+                })
+                .animate({
+                    top: 100
+                }, 1000, function () {
+                    /* ...callback... */
+                });
+            // $('.card').hide();
+            // $(".card").slideUp("fast");
+            // $( ".card" ).slideDown("slow");
+
+            // $('.card').show()
+            // .css( {'opacity': 0, 'bottom': '-100px' } )
+            // .animate( { 'opacity': '1', 'bottom' : 0 }, 1000 );
+        });
+    </script>
+
+</head>
+
+<body id="Main">
+    <!-- Modal -->
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cancel Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="exampleModal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to cancel this order #00001?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="exampleModal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="inner-width">
+            <h1 class="logo"><span style="color:#1b42f0;">IVE </span>AIRLINE</h1>
+            <nav class="navigation-menu">
+                <a href="../html/Home-Login.html"></i> Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+
+                <div class="dropdown">
+                    <img class="dropimg" src="../image/user_icon.jpg">
+
+                    <div class="dropdown-content">
+                        <a href="../html/myProfile.html">My profile</a>
+                        <a href="myOrder.html">My Order</a>
+                        <a href="../html/Home.html">Login Out</a>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <div id="preloader" hidden>
+        <div id="status" hidden><img src="../image/loading.gif" /></div>
+    </div>
+
+    <div class="AllContainer">
+        <center>
+            <div id="SearchTicketContainer" style="height: auto;min-height: 1000px;">
+                <div class="card" style="padding-bottom:50px;width: 500px;margin-top: 60px;">
+                    <div style="margin-left: 20px;margin-top: 20px;text-align: center;">
+                        <h1>Confirm Message</h1>
+                        <i class="bi bi-info-circle" style="font-size: 150px;"></i><br>
+                        Are you sure to cancel order #100001 ?
+
+                        <div class="row" style="margin-right: 40px;margin-top: 20px;">
+                            <div class="col-md-6">
+                                <a href="editMyorder.html">
+                                    <button type="reset" class="btn btn-success btn-lg btn-block"
+                                        style="width: 100%;">Back</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="SuccessCancelOrder.html">
+                                    <button type="submit" class="btn btn-danger btn-lg btn-block pay-btn"
+                                        style="width: 100%;">Cancel</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+
+
+
+
+    </div>
+    <div id="NumClassBoxContainer" hidden>
+        <div id="NumClassBox">
+            <div id="NumClassBoxheader">
+                <h2>Select cabin class and number of travelers</h2>
+                <span id="closebtn"></span>
+            </div>
+            <h2 class="ChoiceType">Cabin Class:</h2>
+            <div id="Selectcabin">
+                <label><input type="radio" id="First" name="label" value="First"><span
+                        class="CabinName">First</span></label>
+                <label><input type="radio" id="Business" name="label" value="Business"><span
+                        class="CabinName">Business</span></label>
+                <label><input type="radio" id="Economy" name="label" value="Economy" checked><span
+                        class="CabinName">Economy</span></label>
+            </div>
+            <h2 class="ChoiceType">Number Of Travelers:</h2>
+            <div id="SelectNum">
+
+                <div id="textAge">
+                    <p> Adults (Age 18+) : </p>
+                    <p>Children (Age 0-17) : </p>
+                </div>
+
+                <div id="spinnerNum">
+                    <div class="spinnerContainer" id="spinner1">
+                        <button id="Aminusbtn" class="minusbtn"> - </button>
+                        <input id="Adults" type="number" max="9" min="1" value="1">
+                        <button id="Aplusbtn" class="plusbtn"> + </button>
+                    </div>
+
+                    <div class="spinnerContainer" id="spinner2">
+                        <button id="Cminusbtn" class="minusbtn"> - </button>
+                        <input id="Children" type="number" max="8" min="0" value="0">
+                        <button id="Cplusbtn" class="plusbtn"> + </button>
+                    </div>
+                </div>
+            </div>
+            <div id="SelectNumfooter">
+                <span id="SelectNumError"></span>
+                <button id="Donebtn">Done</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

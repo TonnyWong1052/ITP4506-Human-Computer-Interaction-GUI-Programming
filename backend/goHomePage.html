@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirected another page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+        setTimeout(changeSecond,1000);
+
+        // setTimeout(function(){
+        //     setTimeout(changeSecond,1000);
+        //     // alert(newSecond);
+        // },1000);
+    });
+
+    function changeSecond(){
+        var newSecond = $("#second").text() - 1;
+        $("#second").text(newSecond);
+        if($("#second").text()==0)
+            window.location.href = "home.html";
+
+        setTimeout(changeSecond,1000);
+    }
+</script>
+
+<body style="background-color: #f6f8fe;"></body>
+    <center>
+        You are being redirected to Home page...<br>
+        Please wait <span id="second">8</span> second...
+    </center>
+</body>
+</html>

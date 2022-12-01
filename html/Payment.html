@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <link href="../css/Search.css" rel="stylesheet" type="text/css">
+    <link href="../css/ticketConfirm2.css" rel="stylesheet" type="text/css">
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    <script src="../jslib/jquery.simplePagination.js"></script>
+    <script src="../jquery-ui-1.13.2/jquery-ui.min.js"></script>
+    <link href="../jquery-ui-1.13.2/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../jquery-ui-1.13.2/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="../css/simplePagination.css" />
+    <link rel="icon" href="../image/Airline-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<script>
+    function goAnotherPage() {
+        window.location.href = "SelectSeat.html";
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $(".pay-btn").click(function () {
+            if ($(".credit-card").val() == "" || $(".name").val() == "") {
+                $(".alert-message").show();
+            } else {
+                $(location).prop("href", "../html/SuccessBooking.html");
+            }
+        });
+    });
+</script>
+
+<body id="Main">
+
+    <header>
+        <div class="inner-width">
+            <h1 class="logo"><span style="color:#1b42f0;">IVE </span>AIRLINE</h1>
+            <nav class="navigation-menu">
+                <a href="#"></i> Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+
+                <a id="Loginbtn" onclick="location.href='../html/MemberLR.html';">LOGIN</a>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <div id="preloader" hidden>
+        <div id="status" hidden><img src="../image/loading.gif" /></div>
+    </div>
+
+    <div class="AllContainer">
+
+
+        <div id="SearchTicketContainer" style="height: auto;min-height: 1200px;opacity: 0.9;">
+            <div class="col-md-6 offset-md-3">
+                <span class="anchor" id="formPayment"></span>
+                <hr class="my-5">
+
+                <!-- form card cc payment -->
+                <div class="card card-outline-secondary">
+                    <div class="card-body">
+                        <h3 class="text-center">Credit Card Payment</h3>
+                        <hr>
+                        <div class="alert alert-info p-2 pb-3 alert-message" style="display: none;">
+                            Please fill in all column
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cc_name">Card Holder's Name</label>
+                            <input type="text" class="form-control name" id="cc_name" title="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" class="form-control credit-card" autocomplete="off"
+                                title="Credit card number">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-12">Card Exp. Date</label>
+                            <div class="col-md-4">
+                                <select class="form-control" name="cc_exp_mo" size="0">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control" name="cc_exp_yr" size="0">
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}"
+                                    title="Three digits at back of your card" required="" placeholder="CVC">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <label class="col-md-12">Total Amount: HKD $11236
+                            </label>
+                        </div>
+                        <hr>
+                        <div class="row" style="margin-right: 25px;">
+                            <div class="col-md-6">
+                                <a href="confirmOrder.html">
+                                    <button type="reset" class="btn btn-danger btn-lg btn-block"
+                                        style="width: 100%;">Cancel</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success btn-lg btn-block pay-btn"
+                                    style="width: 100%;">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+
+
+
+    </div>
+    <div id="NumClassBoxContainer" hidden>
+        <div id="NumClassBox">
+            <div id="NumClassBoxheader">
+                <h2>Select cabin class and number of travelers</h2>
+                <span id="closebtn"></span>
+            </div>
+            <h2 class="ChoiceType">Cabin Class:</h2>
+            <div id="Selectcabin">
+                <label><input type="radio" id="First" name="label" value="First"><span
+                        class="CabinName">First</span></label>
+                <label><input type="radio" id="Business" name="label" value="Business"><span
+                        class="CabinName">Business</span></label>
+                <label><input type="radio" id="Economy" name="label" value="Economy" checked><span
+                        class="CabinName">Economy</span></label>
+            </div>
+            <h2 class="ChoiceType">Number Of Travelers:</h2>
+            <div id="SelectNum">
+
+                <div id="textAge">
+                    <p> Adults (Age 18+) : </p>
+                    <p>Children (Age 0-17) : </p>
+                </div>
+
+                <div id="spinnerNum">
+                    <div class="spinnerContainer" id="spinner1">
+                        <button id="Aminusbtn" class="minusbtn"> - </button>
+                        <input id="Adults" type="number" max="9" min="1" value="1">
+                        <button id="Aplusbtn" class="plusbtn"> + </button>
+                    </div>
+
+                    <div class="spinnerContainer" id="spinner2">
+                        <button id="Cminusbtn" class="minusbtn"> - </button>
+                        <input id="Children" type="number" max="8" min="0" value="0">
+                        <button id="Cplusbtn" class="plusbtn"> + </button>
+                    </div>
+                </div>
+            </div>
+            <div id="SelectNumfooter">
+                <span id="SelectNumError"></span>
+                <button id="Donebtn">Done</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

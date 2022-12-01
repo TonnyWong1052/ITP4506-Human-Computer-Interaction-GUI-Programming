@@ -1,0 +1,335 @@
+body{
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+}
+
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    background-color: #fff;
+    z-index: 9999;
+    opacity: 0.7;
+  }
+  #status {
+    position: fixed;
+    width: 218px;
+    height: 419px;
+    margin-left: -140px;
+    margin-top: -160px;
+    left: 50%;
+    top: 50%;
+    opacity: 0.7;
+  }
+
+
+#Main{
+    background-image: url("../image/background2.jpg");
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-position:top;
+    background-size: cover;
+    background-color: #ffffff;
+}
+
+
+#switchContainer{
+
+}
+
+
+#Title{
+    text-align: center;
+}
+
+#LoginFormBox{
+    width: 400px;
+	height: 500px;
+	position: relative;
+	margin: 7% auto;
+
+	border-radius: 10px;
+  	border: 3px solid #000;
+  	box-shadow: 0 0 30px #000;
+  	background: rgba(254, 255, 247, 0.8);
+	overflow: hidden;
+}
+
+
+
+#input-field{
+    position: relative;
+    border-bottom: 2px solid #f04848;
+    margin: 15px 15px 0px 15px;
+
+  }
+#input-field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+#input-field input hover{
+    pointer-events: pointer;
+}
+
+#input-field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #2730de;
+    font-weight: bold;
+    transform: translateY(-50%);
+    font-size: 19px;
+    pointer-events: none;
+    transition: .5s;
+    
+}
+#input-field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+}
+#input-field input:focus ~ label,
+#input-field input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+}
+#input-field input:focus ~ span::before,
+#input-field input:valid ~ span::before{
+    width: 100%;
+}
+
+#RememberForgot{
+    margin: 15px 20px;
+}
+
+#forgot{
+    color: #111303;
+    text-decoration:none;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 15%;
+}
+  
+#forgot:hover{
+    color: #7126d9;
+    cursor: pointer;
+    text-decoration:underline;
+}
+
+#Remember{
+    width: 15px;
+    height: 15px;
+}
+#Remember:hover{
+    cursor:pointer;
+}
+#SubmitBoxContainer{
+  
+}
+
+.SubmitBox{
+    font-weight: bold;
+    font-size: 16px;
+    width: 60%;
+    padding: 10px 30px;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right,#b5ecf8,#aedaf0);
+    outline: none;
+    border-radius: 30px;
+    border: 1px solid;
+    margin-top: 20px;
+}
+.SubmitBox:hover{
+    box-shadow: 0 0 15px rgb(146, 148, 139);
+    cursor: pointer;
+}
+
+.LoginErrorContainer{
+    height: 13px;
+    margin:0px 15px 30px 15px;
+    background-color: transparent;
+}
+
+
+.ErrorMsg{
+    
+    color: #dd1037;
+    font-size: 15px;
+    margin:0px 15px 0px 15px;
+    font-weight: bold;
+}
+
+
+
+#RegisterFormBox{
+    width: 800px;
+	height: 600px;
+	position: relative;
+	margin: 3% auto;
+
+	border-radius: 10px;
+  	border: 3px solid #000;
+  	box-shadow: 0 0 30px #000;
+
+}
+
+#RegisterFormBox form{
+    margin-left: 10px;
+}
+
+#RegisterRightBox{
+    height:100%;
+    width:60%;
+    background: rgb(208, 254, 181);
+    position: absolute;
+    right: 0;
+}
+#RegisterLeftBox{
+    height:100%;
+    width:40%;
+    position: absolute;
+    background: rgb(66, 192, 255);
+    background-image: url("../image/rightbk.jpg");
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+    opacity: 0.95;
+}
+
+#input-field2{
+    display: inline-flex;
+    padding-left:30px;
+    font-size:large;
+    font-weight: bold;
+    color:#2730de;
+}
+
+#input-field2 input{
+    height: 25px;
+    border-radius: 10px;
+}
+
+#LastNamebox{
+    margin-left: 40px;
+}
+
+#input-field3{
+    margin-top: 20px;
+    padding-left:30px;
+    font-size:large;
+    font-weight: bold;
+    color:#2730de;
+}
+
+#input-field3 input{
+    width: 84%;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.ErrorMsgContainer{
+    height: 13px;
+    margin:0px 15px -10px 15px;
+    background-color: transparent;
+}
+
+#Policylink{
+    color: #111303;
+    text-decoration:none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7126d9;
+}
+
+#Policylink:hover{
+    color: #ee1c1c;
+    cursor: pointer;
+    text-decoration:underline;
+}
+
+#switchRegister{
+    background: #4255ff;
+    border: 1px solid #4255ff;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 50px;
+    margin-left:220px;
+
+}
+
+
+#switchRegister:hover,
+#switchRegister:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #4255ff;
+  
+}
+
+#switchRegister:active {
+  opacity: .5;
+}
+
+
+#switchLogin{
+    background: #4255ff;
+    border: 1px solid #4255ff;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 25px;
+    margin-left:250px;
+
+}
+
+
+#switchLogin:hover,
+#switchLogin:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #4255ff;
+  
+}
+
+#switchLogin:active {
+  opacity: .5;
+}
+

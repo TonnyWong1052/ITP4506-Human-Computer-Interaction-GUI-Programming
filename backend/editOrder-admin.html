@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <title>Edit Order</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+$(document).ready(function(){
+  $("body").show();
+  $("body").children().hide();
+  $(".center").show();
+
+  $('.dateTime').val("2022-11-22");
+  $('.Time').val("11:50");
+
+  $('.dateTime2').val("2022-11-25");
+  $('.Time2').val("17:20");
+
+  $(".save-button").click(function(){
+    $(this).children().addClass("fa-spin");
+
+    setTimeout(function(){
+      $(".save-button").children().removeClass("fa-spin");
+      $(".alert-success-message").click();
+    },1500);
+  });
+
+  setTimeout(function(){
+    $("body").children().show();
+    $(".center").hide();
+
+
+    $(".user-name").hide(100, function() {
+        $(this).html("Chan Xiu Ming").show(800);
+    });
+
+  }, 800);
+});
+</script>
+<div id="loader" class="center"></div>
+<body style="display: none;">
+  <!-- page header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center ">
+      <i class="bi bi-list toggle-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></i>
+      <a href="home-admin.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Airline-logo.png" alt="">
+        <span class="d-none d-lg-block">IVE Airline</span>
+      </a>
+
+  </div>
+
+    <div class="dropdown" 
+    style="position: absolute;
+    right: 10px;
+    width: 200px;height: 100dp;">
+      <a class="dropdown-item d-flex align-items-center" href="users-profile.html" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/img/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+        <span class="d-none d-md-block dropdown-toggle ps-2 user-name">User</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="profile-admin.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+      </ul>
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- menu item -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center">
+        <span style="visibility:hidden;">q312</span>
+        <a href="home-admin.html" class="logo d-flex align-items-center">
+          <img src="assets/img/Airline-logo.png" alt="">
+          <span class="d-none d-lg-block">IVE Airline</span>
+        </a>
+    </div>
+    
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+
+      <a href="home-admin.html">
+        <div class="menu-item current-menu-item">
+          <img src="assets/img/home_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Home</span> 
+        </div>
+      </a>
+
+      <a href="order-admin.html">
+        <div class="menu-item">
+          <img src="assets/img/order_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Order</span> 
+        </div>
+      </a>
+
+      <a href="staff-admin.html">
+        <div class="menu-item">
+          <img src="assets/img/staff_menu_icon.png.png" class="menu-item-image"><span class="menu-item-font">Staff</span> 
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Edit Order</h1>
+    </div>
+
+    <div style="font-size: 13px;font-weight:300;margin-bottom: 10px;">
+        Order / Edit Order
+    </div>
+
+
+
+    <section class="section dashboard">
+
+      <div class="col-xxl-12 col-md-12">
+        <div class="card info-card sales-card">
+          <div class="card-body" style="margin-left: -8px;margin-right: -8px;" >
+
+
+              <div style="margin-left: 50px;">
+                <h3 class="card-title">Order Information</h3>
+                <div class="row">
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Order ID:</label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="10001">
+                    </div>
+                  </div>
+
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">User ID:</label>
+                    <div class="col-sm-9">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="ST00001">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">CreditCard:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputPassword" value="1234 5678 1234 5678">
+                    </div>
+                  </div>
+
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Identify Card:</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputPassword" value="A123232(4)">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Adults:</label>
+                    <div class="col-sm-9" >
+                        <input type="number" class="form-control" id="inputPassword" value="1" min="0">
+                    </div>
+                  </div>
+
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">ChildNUm:</label>
+                    <div class="col-sm-9">
+                      <input type="number" class="form-control" id="inputPassword" value="0" min="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">FlightID(First):</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputPassword" value="FL001">
+                    </div>
+                  </div>
+
+                  <div class="form-group row col-sm-6">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">FlightID(Back):</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputPassword" value="FL002">
+                      </div>
+                  </div>
+                </div>
+
+                <h5 style="margin-top: 15px;">First Flight Detail</h5>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Departure:</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputPassword" value="Hong Kong Airport">
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Destination:</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="inputPassword" value="Japan Airport">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Date:</label>
+                      <div class="col-sm-9">
+                        <input id="startDate" class="form-control dateTime" type="date" value="1999/10/31" />
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Time:</label>
+                      <div class="col-sm-9">
+                        <input id="Time" class="form-control Time" type="Time" value="1999/10/31" />
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Type of section:</label>
+                      <div class="col-sm-9" >
+                        <select class="form-select shadow-none border-top">
+                            <option>Economic</option>
+                            <option>Business</option>
+                            <option>First</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Price($):</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" id="inputPassword" value="4580">
+                        </div>
+                    </div>
+                </div>
+
+                <h5 style="margin-top: 15px;">Second Flight Detail</h5>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Departure:</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputPassword" value="Japan Airport">
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Destination:</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" id="inputPassword" value="Hong Kong Airport">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Date:</label>
+                      <div class="col-sm-9">
+                        <input id="startDate" class="form-control dateTime2" type="date" value="1999/10/31" />
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Time:</label>
+                      <div class="col-sm-9">
+                        <input id="Time" class="form-control Time2" type="Time"/>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Type of section:</label>
+                      <div class="col-sm-9" >
+                        <select class="form-select shadow-none border-top">
+                            <option>Economic</option>
+                            <option>Business</option>
+                            <option>First</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                    <div class="form-group row col-sm-6">
+                      <label for="staticEmail" class="col-sm-3 col-form-label">Price($):</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" id="inputPassword" value="3910">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="float: right;margin-right: 50px;margin-top: 50px;"> 
+                  <button type="button" class="btn btn-danger">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn-primary save-button">
+                      <i class="fa fa-refresh" style="margin-right: 5px;"></i>Save
+                  </button>
+                </div>
+              </div>
+
+            <!-- <h5 class="card-title">Staff #ST10003</h5>  -->
+            <!-- <button type="button" class="btn btn-outline-success">This year</button>
+            <button type="button" class="btn btn-outline-success">This year</button> -->    
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <button type="button" class="btn btn-primary alert-success-message" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
+        test
+      </button>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Success Message</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <center>
+            <img src="assets/img/success_icon.png" style="height: 200px;"><br><br>
+            The order detail has been changed successfully
+          </center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- End Sales Card -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; IVE Airline All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script>
+
+  </script>
+</html>

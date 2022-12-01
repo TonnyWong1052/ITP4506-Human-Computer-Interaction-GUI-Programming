@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <title>My Profile</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>      
+$(document).ready(function(){
+  $("body").show();
+  $("body").children().hide();
+  $(".center").show();
+
+  setTimeout(function(){
+    $("body").children().show();
+    $(".center").hide();
+
+
+    $(".user-name").hide(100, function() {
+        $(this).html("Chan Xiu Ming").show(800);
+    });
+
+  }, 800);
+
+  $(".save-button").click(function(){
+    $(this).children().addClass("fa-spin");
+
+    setTimeout(function(){
+      $(".save-button").children().removeClass("fa-spin");
+      $(".alert-success-message").click();
+    },1500);
+  });
+
+});
+</script>
+<div id="loader" class="center"></div>
+<body style="display: none;">
+  <!-- page header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center ">
+      <i class="bi bi-list toggle-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></i>
+      <a href="home-admin.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Airline-logo.png" alt="">
+        <span class="d-none d-lg-block">IVE Airline</span>
+      </a>
+
+  </div>
+
+    <div class="dropdown" 
+    style="position: absolute;
+    right: 10px;
+    width: 200px;height: 100dp;">
+      <a class="dropdown-item d-flex align-items-center" href="users-profile.html" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/img/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+        <span class="d-none d-md-block dropdown-toggle ps-2 user-name">User</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="profile-admin.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+      </ul>
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- menu item -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center">
+        <span style="visibility:hidden;">q312</span>
+        <a href="home-admin.html" class="logo d-flex align-items-center">
+          <img src="assets/img/Airline-logo.png" alt="">
+          <span class="d-none d-lg-block">IVE Airline</span>
+        </a>
+    </div>
+    
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+
+      <a href="home-admin.html">
+        <div class="menu-item current-menu-item">
+          <img src="assets/img/home_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Home</span> 
+        </div>
+      </a>
+
+      <a href="order-admin.html">
+        <div class="menu-item">
+          <img src="assets/img/order_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Order</span> 
+        </div>
+      </a>
+
+      <a href="staff-admin.html">
+        <div class="menu-item">
+          <img src="assets/img/staff_menu_icon.png.png" class="menu-item-image"><span class="menu-item-font">Staff</span> 
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>My Profile</h1>
+    </div>
+
+    <div style="font-size: 13px;font-weight:300;margin-bottom: 10px;">
+      Home / My Profile
+    </div>
+
+    <section class="section dashboard">
+      <div class="col-lg-12">
+        <div class="row">
+
+
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <center style="margin-top: 30px;">
+                  <img src="assets/img/user_icon.jpg" style="width: 200px;margin-right: auto;margin-left: auto;">
+                  <!-- <div class="form-group">
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                  </div> -->
+                  <h4>Chan Xiu Ming</h4>
+                  <h5>Administrator</h5>
+                </center>
+              
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-xxl-8 col-md-6">
+            <div class="card info-card sales-card">
+              <div class="card-body personal-Info">
+                <h3 class="card-title">Personal Information</h3>
+                <form>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Account Number</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="1000001">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="ChanXiuMing@gmail.com">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Birth Date</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="21 November 1995">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Country</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="China">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Identity Card</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="A123456(7)">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Hong Kong, Tuen Mun, Ma On Road, Wong Hoi House, 12/F Room 1204">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Mobile number</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="+852 21800000">
+                    </div>
+                  </div>
+                </form>
+              
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-xxl-3 col-md-6" style="margin-top: -50px;">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">History</h5>
+                <table class="table no-wrap table-hover">
+                  <thead>
+                      <tr>
+                          <th class="border-top-0">Date</th>
+                          <th class="border-top-0">Control</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>2022-11-20</td>
+                        <td>Edit Order #100001</td>
+                      </tr>
+                      <tr>
+                        <td>2022-11-20</td>
+                        <td>Login System</td>
+                      </tr>
+                      <tr>
+                          <td>2022-11-18</td>
+                          <td class="txt-oflo">Delete Order #100025</td>
+                      </tr>
+                      <tr>
+                          <td>2022-11-18</td>
+                          <td class="txt-oflo">Delete Order #100019</td>
+                      </tr>
+                      <tr>
+                        <td>2022-11-18</td>
+                        <td class="txt-oflo">Login System</td>
+                    </tr>
+                      <tr>
+                          <td>2022-11-18</td>
+                          <td class="txt-oflo">Registed Account</td>
+                      </tr>
+                  </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-9 col-md-6">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Change Password</h5>
+                <div class="form-group row">
+
+                  <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Current Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                  </div>
+
+                  <div class="form-group row" style="margin-top:20px;">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">New Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                  </div>
+
+                  <div class="form-group row" style="margin-top:20px;">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Retype Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                  </div>
+
+                  <div style="text-align-last: right;margin-top: 20px;">
+                    <button type="button" class="btn btn-primary save-button" style="margin-right:25px;">
+                      <i class="fa fa-refresh" style="margin-right: 5px;"></i>Save
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- End Sales Card -->
+    </section>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary alert-success-message" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display: none;">
+      test
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Success Message</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <center>
+            <img src="assets/img/success_icon.png" style="height: 200px;"><br><br>
+            Your password has been changed successfully
+          </center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- End #main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; IVE Airline All Rights Reserved
+    </div>
+  </footer>
+  <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

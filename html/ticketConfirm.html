@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link href="../css/ticketConfirm.css" rel="stylesheet"type="text/css">
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    
+    <link rel="icon" href="../image/Airline-logo.png" type="image/x-icon">
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLX7R3YnZTq67O93mYxIH3MzXrczXGvQo",
+            authDomain: "ejoproject-eaa68.firebaseapp.com",
+            databaseURL: "https://ejoproject-eaa68-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "ejoproject-eaa68",
+            storageBucket: "ejoproject-eaa68.appspot.com",
+            messagingSenderId: "270711127515",
+            appId: "1:270711127515:web:fbef088bd38ae00abcfbfe"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import {getDatabase,set,get,push,update,remove,ref,child}
+        from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        
+        const db = getDatabase();
+
+
+
+        // $.removeCookie('RUserIDIsUnique',{  path: '/' });
+        // checkACIsUnique("US0012");
+        // console.log($.cookie('RUserIDIsUnique'));
+
+        //--------------------------------------UI--------------------------------------------------------------------
+        //Firstname Lastname RUserID RUserIDError RPassword RPasswordError REmail REmailError RpPassword
+        $(document).ready(function(){
+            $(window).on("load",function(){
+                $(".PassengerDetailContainer").hide();
+                $("#status").delay().fadeIn();
+                $("#preloader").delay().fadeIn();
+                $("#status").delay(2000).fadeOut(3000);
+                $("#preloader").delay(2100).fadeOut(2000);
+                $(".PassengerDetailContainer").delay(2100).fadeIn();
+                
+            })
+
+            $("#submit").click(function(){
+                $("#status").delay().fadeIn();
+                $("#preloader").delay().fadeIn();
+                $("#status").delay(2000).fadeOut(3000);
+                $("#preloader").delay(2100).fadeOut(2000);
+                setTimeout(function(){
+                        $(location).prop("href", "../html/SuccessBooking.html");
+                },2000)
+            })
+
+
+        });
+    </script>
+
+
+</head>
+<body id="Main">
+    <div id="preloader" hidden>
+        <div id="status" hidden><img src="../image/loading.gif"/></div>
+    </div>
+    <div class="FormSeatContainer">
+        <div class="FormContainer">
+            <div class="ALLDetailContainer">
+                <ul class="PassengerDetailContainer">
+                    <li class="EachPassengerContainer">
+                        <div class="PassengerTitle">
+                            <h2>Passenger 1(Adult) :</h2>
+                        </div>
+                        <div class="Name">
+                            <a>Name:</a>
+                            <input type="text">
+
+                        </div>
+        
+                        <div class="Gender">
+                            <label for="M">Male:</label>
+                            <input class="radio" name='gender2' type="radio" id="M" value="Male" checked>
+                            <label for="F">Famale:</label>
+                            <input class="radio" name='gender2' type="radio" id="F" value="Famale">
+                        </div>
+                        <div class="DateOfBirth">
+                            <label for="D">Date of Birth:</label><br>
+                            <input type="date" id="D">
+                        </div>
+                        <div class="Country">
+                            <label for="C">Country & Region:</label><br>
+                            <input type="text" id="C">
+                        </div>
+                        <div class="TravelDocument">
+                            <label for="TD">Type of Travel Document:</label><br>
+                            <select class="Contactbox" name="TD" id="TD">
+                                <option value="HKID">HKID</option>
+                                <option value="Passport">Passport</option>
+
+                            </select>
+                        </div>
+                        <div class="TravelDocumentNumber">
+                            <label for="TDN">Travel Document Number:</label><br>
+                            <input type="text" id="TDN">
+                        </div>
+                    </li>
+                    <li class="EachPassengerContainer">
+                        <div class="PassengerTitle">
+                            <h2>Passenger 2(Adult) :</h2>
+                        </div>
+                        <div class="Name">
+                            <a>Name:</a>
+                            <input type="text">
+        
+                        </div>
+        
+                        <div class="Gender">
+                            <label for="M">Male:</label>
+                            <input class="radio" name='gender1' type="radio" id="M" value="Male" checked>
+                            <label for="F">Famale:</label>
+                            <input class="radio" name='gender1' type="radio" id="F" value="Famale">
+                        </div>
+                        <div class="DateOfBirth">
+                            <label for="D">Date of Birth :</label><br>
+                            <input type="date" id="D">
+                        </div>
+                        <div class="Country">
+                            <label for="C">Country & Region :</label><br>
+                            <input type="text" id="C">
+                        </div>
+                        <div class="TravelDocument">
+                            <label for="TD">Type of Travel Document :</label><br>
+                            <select class="Contactbox" name="TD" id="TD">
+                                <option value="HKID">HKID</option>
+                                <option value="Passport">Passport</option>
+                            </select>
+                        </div>
+                        <div class="TravelDocumentNumber">
+                            <label for="TDN">Travel Document Number:</label><br>
+                            <input type="text" id="TDN">
+                        </div>
+                    </li>
+                </ul>
+                <div class="ContactContainer">
+                    <div class="ContactTitle">
+                        <a>Contact Infomation</a>
+                        <hr>
+                    </div>
+                    <div class="ContactLastName">
+                        <label for="CPL">Full Name :</label><br>
+                        <input class="Contactbox" type="text" id="CPL">
+
+                    </div>
+                    <div class="ContactFirstName">
+                        <label for="CPF">Credit Card Number :</label><br>
+                        <input class="Contactbox" type="text" id="CPF">
+                    </div>
+                    <div class="PhoneNumber">
+                        <label for="PN">Phone Number :</label><br>
+                        <input class="Contactbox" type="tel" id="PN">
+                    </div>
+                    <div class="Email">
+                        <label for="E">Email :</label><br>
+                        <input class="Contactbox" type="email" id="E">
+                    </div>
+
+                </div>
+
+                    
+
+                    
+
+                
+                
+            </div>
+            <div class="FlightDetailContainer">
+                <div class="TOFrom">
+                    <h3 style="text-align: center; margin-top: 30px;" >Hong Kong &#8644; Japan,Kansai</h3>
+                </div>
+                <hr>
+
+                <div class="FlightContainer">
+                    <div class="To">
+                        <a class="bold">Depart</a><a style="font-weight: 700;"> 28 DEC 00:05 - 14:45</a><br><br>
+                        
+                        <a style="color: rgb(120, 120, 120); ">HKG T1 &#8658; JPG T3  14h40m | direct</a><br>
+                        <img src="../image/hong-kong-airlines.svg"  width="20px" height="20px"><a>  HK3115</a>
+                    </div>
+                    
+                    <div class="From">
+                        <a class="bold">Return</a><a style="font-weight: 700; "> 29 DEC 00:05 - 14:45</a><br><br>
+                        
+                        <a style="color: rgb(120, 120, 120);">JPG T3 &#8658; HKG T1  14h40m | direct</a><br>
+                        <img src="../image/japan-airlines-logo-vector.svg"  width="20px" height="20px"><a>  JP215</a>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="Place">
+                    <h3>Total</h3>
+                    <h3 style="color: orange; text-align: right;">HKD 5,788.51</h3>
+
+                </div>
+                <hr class="hrPadding">
+                <div class="buttonContainer">
+                    <button class="btn" onclick="location.href='../html/Search.html'">Back</button>
+                    <button id="submit" class="btn" style="margin-left: 100px;">Book</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="SeatContainer"> 
+            <div class="plane">
+                <div class="select">
+                  <h1>Please select your seat</h1>
+                </div>
+                <div>
+                  <i class="bi bi-caret-left-fill" style="margin-left: 5px"></i>Exit
+                  <span style="float: right;margin-right: 5px;">Exit<i class="bi bi-caret-right-fill"></i></span>
+                </div>  
+              <ol>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="1A" />
+                      <label for="1A">1A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="1B" />
+                      <label for="1B">1B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="1C" />
+                      <label for="1C">1C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="1D" disabled />
+                      <label for="1D" style="color: white;">X</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="2A" disabled/>
+                      <label for="2A" style="color: white;">X</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="2B" />
+                      <label for="2B">2B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="2C" />
+                      <label for="2C">2C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="2D" />
+                      <label for="2D">2D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="3A" disabled/>
+                      <label for="3A"  style="color: white;">X</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="3B" />
+                      <label for="3B">3B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="3C" />
+                      <label for="3C">3C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="3D" />
+                      <label for="3D">3D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="4A" />
+                      <label for="4A">4A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="4B" />
+                      <label for="4B">4B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="4C" />
+                      <label for="4C">4C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="4D" />
+                      <label for="4D">4D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="5A" />
+                      <label for="5A">5A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="5B" />
+                      <label for="5B">5B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="5C" />
+                      <label for="5C">5C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="5D" />
+                      <label for="5D">5D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="6A" />
+                      <label for="6A">6A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="6B" />
+                      <label for="6B">6B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="6C" />
+                      <label for="6C">6C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="6D" />
+                      <label for="6D">6D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="7A" />
+                      <label for="7A">7A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="7B" />
+                      <label for="7B">7B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="7C" />
+                      <label for="7C">7C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="7D" />
+                      <label for="7D">7D</label>
+                    </li>
+
+                  </ol>
+                </li>
+                <li>
+                  <ol class="seats">
+                    <li class="seat">
+                      <input type="checkbox" id="8A" />
+                      <label for="8A">8A</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="8B" />
+                      <label for="8B">8B</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="8C" />
+                      <label for="8C">8C</label>
+                    </li>
+                    <li class="seat">
+                      <input type="checkbox" id="8D" />
+                      <label for="8D">8D</label>
+                    </li>
+  
+                    
+                  </ol>
+                </li>
+                <li>
+                    <ol class="seats">
+                      <li class="seat">
+                        <input type="checkbox" id="9A" />
+                        <label for="9A">9A</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="9B" />
+                        <label for="9B">9B</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="9C" />
+                        <label for="9C">9C</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="9D" />
+                        <label for="9D">9D</label>
+                      </li>
+    
+                      
+                    </ol>
+                </li>
+                <li>
+                    <ol class="seats">
+                      <li class="seat">
+                        <input type="checkbox" id="10A" />
+                        <label for="10A">10A</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="10B" />
+                        <label for="10B">10B</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="10C" />
+                        <label for="10C">10C</label>
+                      </li>
+                      <li class="seat">
+                        <input type="checkbox" id="10D" />
+                        <label for="10D">10D</label>
+                      </li>
+                    </ol>
+                </li>
+              </ol>
+              <div>
+                <i class="bi bi-caret-left-fill"></i>Exit
+                <span style="float: right;">Exit<i class="bi bi-caret-right-fill"></i></span>
+              </div>  
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

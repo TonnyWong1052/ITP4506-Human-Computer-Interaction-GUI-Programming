@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("body").show();
+  $("body").children().hide();
+  $(".center").show();
+
+  setTimeout(function(){
+    $("body").children().show();
+    $(".center").hide();
+
+
+    $(".user-name").hide(100, function() {
+        $(this).html("Chan Xiu Ming").show(800);
+    });
+
+  }, 800);
+});
+</script>
+<div id="loader" class="center"></div>
+<body style="display: none;">
+  <!-- page header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center ">
+      <i class="bi bi-list toggle-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></i>
+      <a href="home.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Airline-logo.png" alt="">
+        <span class="d-none d-lg-block">IVE Airline</span>
+      </a>
+
+  </div>
+
+    <div class="dropdown" 
+    style="position: absolute;
+    right: 10px;
+    width: 200px;height: 100dp;">
+      <a class="dropdown-item d-flex align-items-center" href="users-profile.html" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/img/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+        <span class="d-none d-md-block dropdown-toggle ps-2 user-name">User</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+      </ul>
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- menu item -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center">
+        <span style="visibility:hidden;">q312</span>
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="assets/img/Airline-logo.png" alt="">
+          <span class="d-none d-lg-block">IVE Airline</span>
+        </a>
+    </div>
+    
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+
+      <a href="home.html">
+        <div class="menu-item current-menu-item">
+          <img src="assets/img/home_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Home</span> 
+        </div>
+      </a>
+
+      <a href="order.html">
+        <div class="menu-item">
+          <img src="assets/img/order_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Order</span> 
+        </div>
+      </a>
+
+      <a href="staff.html">
+        <div class="menu-item">
+          <img src="assets/img/staff_menu_icon.png.png" class="menu-item-image"><span class="menu-item-font">Staff</span> 
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Home</h1>
+    </div>
+
+    <section class="section dashboard">
+
+
+      <!-- End Sales Card -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; IVE Airline All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script>
+
+  </script>
+</html>

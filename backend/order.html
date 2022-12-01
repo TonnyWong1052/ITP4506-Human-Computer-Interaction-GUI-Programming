@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <title>Order</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("body").show();
+  $("body").children().hide();
+  $(".center").show();
+
+  $("button").click(function(){
+    window.location.href = "editOrder.html";
+  });
+
+  setTimeout(function(){
+    $("body").children().show();
+    $("table").hide();
+    $(".center").hide();
+    $("table").show()
+    .css({
+      'opacity': 0,
+      'bottom': '-100px'
+    })
+    .animate({
+      'opacity': '1',
+      'bottom': '100px'
+    }, 1000);
+
+    $(".user-name").hide(100, function() {
+        $(this).html("Chan Xiu Ming").show(800);
+    });
+
+  }, 800);
+});
+</script>
+<div id="loader" class="center"></div>
+<body style="display: none;">
+  <!-- page header -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center ">
+      <i class="bi bi-list toggle-sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></i>
+      <a href="home.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Airline-logo.png" alt="">
+        <span class="d-none d-lg-block">IVE Airline</span>
+      </a>
+
+  </div>
+
+    <div class="dropdown" 
+    style="position: absolute;
+    right: 10px;
+    width: 200px;height: 100dp;">
+      <a class="dropdown-item d-flex align-items-center" href="users-profile.html" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/img/user_icon.jpg" alt="Profile" class="rounded-circle" style="height: 45px;">
+        <span class="d-none d-md-block dropdown-toggle ps-2 user-name">User</span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge"></i> My Profile</a></li>
+        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Sign Out</a></li>
+      </ul>
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- menu item -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center">
+        <span style="visibility:hidden;">q312</span>
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="assets/img/Airline-logo.png" alt="">
+          <span class="d-none d-lg-block">IVE Airline</span>
+        </a>
+    </div>
+    
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+
+      <a href="home.html">
+        <div class="menu-item">
+          <img src="assets/img/home_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Home</span> 
+        </div>
+      </a>
+
+      <a href="order.html">
+        <div class="menu-item current-menu-item">
+          <img src="assets/img/order_menu_icon.png" class="menu-item-image"><span class="menu-item-font">Order</span> 
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Order</h1>
+    </div>
+
+    <section class="section dashboard">
+      <div class="col-xxl-12 col-md-12">
+        <div class="card info-card sales-card">
+          <div class="card-body">
+            <span class="card-title" style="display: inline-block;">Order List</span> 
+            <input type="search" name="search" id="search" class="form-control SearchInput" style="width: 300px;" placeholder="search..." aria-label="Search"></p>
+            
+            <div class="table-responsive">
+              <table class="table no-wrap table-hover">
+                  <thead style="background-color: rgb(243, 243, 250);">
+                      <tr>
+                          <th class="border-top-0">Order ID</th>
+                          <th class="border-top-0">Name</th>
+                          <th class="border-top-0">Special Fee</th>
+                          <th class="border-top-0">Amount</th>
+                          <th class="border-top-0">Edit</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>10001</td>
+                          <td class="txt-oflo">Hong Kong -> Japan</td>
+                          <td>522</td>
+                          <td><span class="text-info">$1724</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10002</td>
+                          <td class="txt-oflo">United States of America -> The United Kingdom</td>
+                          <td>430</td>
+                          <td><span class="text-info">$2250</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10003</td>
+                          <td class="txt-oflo">The United Kingdom -> United States of America</td>
+                          <td>321</td>
+                          <td><span class="text-info">$1050</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10004</td>
+                          <td class="txt-oflo">Hong Kong -> The United Kingdom</td>
+                          <td>234</td>
+                          <td><span class="text-info">$3050</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10005</td>
+                          <td class="txt-oflo">Japan -> Hong Kong</td>
+                          <td>211</td>
+                          <td><span class="text-info">$1520</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10006</td>
+                          <td class="txt-oflo">Shang Hai -> Hong Kong</td>
+                          <td>157</td>
+                          <td><span class="text-info">$890</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                          <td>10007</td>
+                          <td class="txt-oflo">Japan -> Shang Hai</td>
+                          <td>123</td>
+                          <td><span class="text-info">$9250</span></td>
+                          <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                      </tr>
+                      <tr>
+                        <td>10008</td>
+                        <td class="txt-oflo">The United Kingdom -> Shang Hai</td>
+                        <td>89</td>
+                        <td><span class="text-info">$850</span></td>
+                        <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                     </tr>
+                     <tr>
+                      <td>10009</td>
+                      <td class="txt-oflo">Shang Hai -> The United Kingdom</td>
+                      <td>82</td>
+                      <td><span class="text-info">$720</span></td>
+                      <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                    </tr>
+                    <tr>
+                      <td>10010</td>
+                      <td class="txt-oflo">Japan -> The United Kingdom</td>
+                      <td>62</td>
+                      <td><span class="text-info">$612</span></td>
+                      <td><button type="button" class="btn btn-outline-info">Edit</button></td>
+                    </tr>
+                  </tbody>
+              </table>
+
+              <center>  
+                <div class="pagination">
+                  <a href="#"><</a>
+                  <a href="#" class="active">1</a>
+                  <a href="#">2</a>
+                  <a href="#">3</a>
+                  <a href="#">4</a>
+                  <a href="#">5</a>
+                  <a href="#">6</a>
+                  <a href="#">></a>
+                </div>
+              </center>
+          </div>
+          
+          </div>
+
+        </div>
+      </div>
+
+      <!-- End Sales Card -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; IVE Airline All Rights Reserved
+    </div>
+  </footer>
+
+  <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script>
+
+  </script>
+</html>

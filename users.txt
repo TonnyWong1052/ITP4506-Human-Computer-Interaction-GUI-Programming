@@ -1,0 +1,5 @@
+Username / Password / Role
+user / user / Normal_user
+operator / operator / Operator
+admin / admin / Administrator
+

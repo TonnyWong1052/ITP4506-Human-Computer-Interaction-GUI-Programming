@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <script src="../jslib/jquery-3.6.1.min.js"></script>
+    <script src="../jslib/jquery-ui.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+
+    <script type="module">
+
+
+        $(document).ready(function(){
+
+
+
+            function counttime() {
+                
+                if($('#BackTime').html() === '0'){
+
+                    window.location.href=("../html/Home.html");
+
+                }else{
+                    $('#BackTime').html($('#BackTime').html()-1);
+                }
+            }
+
+            setInterval(counttime,1000);
+            
+
+            $(".at").click(function(){
+                    window.location.href=("../html/Home.html");
+            })
+
+
+
+            
+        });
+    </script>
+
+
+  </head>
+    <style>
+      body {
+        text-align: center;
+        padding: 40px 0;
+        
+        background-image: url(../image/wallpaper.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+        h1 {
+          color: #73a22c;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #404F5E;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 0;
+        }
+      i {
+        color: #ffffff;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .card {
+
+        
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: rgb(255, 255, 255);
+
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+
+        padding: 100px 90px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+
+      .card:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-card-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-card-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.card:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(222, 221, 221);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+
+    </style>
+
+    <body>
+      <div class="card">
+      <div style="border-radius:200px; height:200px; width:200px; background: #7abc16; margin:0 auto;">
+        <i class="checkmark">✓</i>
+      </div>
+        <h1>Booking Successful!</h1> 
+        <p style="font-weight: 700;" id="Welcome">Thank you!!!</p><br><br><br><br>
+        <a class="at" style="font-weight: 700;cursor: pointer;  text-decoration: none; color: darkblue; font-size: larger;">Back To Home Page (</a>
+        <a class="at" id="BackTime"  style="font-weight: 700;cursor: pointer;  text-decoration: none; color: rgb(147, 2, 2); font-size: larger;">5</a>
+        <a class="at" style="font-weight: 700; cursor: pointer; text-decoration: none; color: darkblue; font-size: larger;">)</a>
+      </div>
+    </body>
+</html>
