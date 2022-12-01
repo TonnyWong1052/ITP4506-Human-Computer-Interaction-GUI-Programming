@@ -18,6 +18,26 @@
 ![EditStaff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/EditStaff.png)
 ![CreateStaff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/createStaff.png)
 
+# Account
+```
+Role: User 
+Account: user
+Password: user
+```
+
+```
+Role: Operator 
+Account: operator
+Password: operator
+```
+
+```
+Role: Administrator 
+Account: admin
+Password: admin
+```
+
+
 # Functions of the System:
 ## 1) Register and Login
 There are THREE types of user accounts: Administrator, Operator, and Normal_user.
