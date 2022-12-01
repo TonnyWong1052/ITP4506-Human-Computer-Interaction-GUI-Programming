@@ -16,7 +16,7 @@
 ![Profile](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/profile.png)
 ![Staff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/Staff.png)
 ![EditStaff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/EditStaff.png)
-![CreateStaff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/createStaff.pngg)
+![CreateStaff](https://github.com/TonnyWong1052/ITP4506/blob/main/demon/createStaff.png)
 
 # Functions of the System:
 ## 1) Register and Login
