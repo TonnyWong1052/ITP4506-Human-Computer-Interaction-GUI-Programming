@@ -22,7 +22,7 @@ After a searching record is selected, users can look on it detailed, for example
 After that, a detailed booking information preview will be shown to the user before the final payment. In addition, users could view their previous booking information. However, they should only update and cancel their booking THREE days before the schedule.
 
 ## Set-up
-open follow html file
+open following html file
 ```
 html/Home.html
 ```
