@@ -1,7 +1,7 @@
 # ITP4506 - Human Computer Interaction & GUI Programming
 > ITP114105 Software engineering (Tuen Mun) Year2 2022/12
 
-> Programming language - HTML, CSS, Javascript(JQuery)
+> Programming language - HTML, CSS, Javascript(JQuery), Ajax
 
 # Demon
 ## frontend
